@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Organizer</string>
+    <string name="menu_dodaj">Dodaj nowe zadanie</string>
+    <string name="nazwaZadania">Wpisz nazwę zadania</string>
+    <string name="opisZadania">Podaj krótki opis zaplanowanego zadnia</string>
+    <string name="buttonDodaj">Zaplanuj zadanie</string>
+</resources>

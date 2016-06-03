@@ -9,8 +9,12 @@ public class Zadanie {
     private String opis;
 
 
-    public Zadanie(){
+    public Zadanie(){}
 
+    public Zadanie(int id, String nazwa, String opis){
+        this.id = id;
+        this.nazwa = nazwa;
+        this.opis = opis;
     }
 
     public String getNazwa() {

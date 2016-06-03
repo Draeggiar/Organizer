@@ -9,7 +9,7 @@ import android.database.sqlite.SQLiteOpenHelper;
  */
 public class DatabaseManager extends SQLiteOpenHelper{
     private static final int  DB_WERSJA = 1;
-    private static final String DB_NAZWA = "Zadanie.db";
+    public static final String DB_NAZWA = "Zadanie.db";
     public static String ZAD_ID="id", ZAD_NAZWA="nazwa", ZAD_OPIS="opis", NAZWA_TABELI="ZADANIE";
     private static final String CREATE_TABLE_TYP = "CREATE TABLE "+NAZWA_TABELI+"(" +
                                 ZAD_ID+" INTEGER PRIMARY KEY AUTOINCREMENT," +

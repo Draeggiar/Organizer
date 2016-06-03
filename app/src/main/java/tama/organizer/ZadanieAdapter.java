@@ -7,16 +7,13 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-
-import org.w3c.dom.Text;
-
 import java.util.ArrayList;
 
 /**
  * Created by Tama on 24.05.2016.
  */
 public class ZadanieAdapter extends BaseAdapter{
-    private ArrayList<Zadanie> listaZadan;
+    private volatile ArrayList<Zadanie> listaZadan;
     private LayoutInflater zadInf;
 
     public ZadanieAdapter(Context c, ArrayList<Zadanie> zadania){
@@ -24,7 +21,7 @@ public class ZadanieAdapter extends BaseAdapter{
             zadInf= LayoutInflater.from(c);
     }
 
-    public void add(Zadanie noweZadanie){
+    public synchronized void add(Zadanie noweZadanie){
         listaZadan.add(noweZadanie);
         notifyDataSetChanged();
     }
@@ -45,14 +42,24 @@ public class ZadanieAdapter extends BaseAdapter{
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(final int position, View convertView, ViewGroup parent) {
         LinearLayout zadLay = (LinearLayout)zadInf.inflate(R.layout.zadanie, parent, false);
         TextView zadanieNazwa = (TextView)zadLay.findViewById(R.id.nazwa);
         TextView zadanieOpis = (TextView) zadLay.findViewById(R.id.opis);
-        Zadanie obecneZadanie = listaZadan.get(position);
+        final Zadanie obecneZadanie = listaZadan.get(position);
         zadanieNazwa.setText(obecneZadanie.getNazwa());
         zadanieOpis.setText(obecneZadanie.getOpis());
         zadLay.setTag(position);
+        zadLay.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                listaZadan.remove(position);
+                BazaZadan.usunZadanie(obecneZadanie);
+                notifyDataSetChanged();
+                return false;
+            }
+        });
+
         return zadLay;
     }
 }

@@ -11,7 +11,7 @@ import android.widget.ListView;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity{
-    private ArrayList<Zadanie> listaZadan;
+    private static ArrayList<Zadanie> listaZadan;
     private ListView zadanieView;
     private BazaZadan bazaZadan;
     private ZadanieAdapter zadAdp;
@@ -60,17 +60,22 @@ public class MainActivity extends AppCompatActivity{
     }
 
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+    protected void onActivityResult(int requestCode, int resultCode, final Intent data) {
         // Pobiera dane z formularza i dodaje zadanie do bazy, a nastepnie odswieza liste zadan
-        String nazwa, opis;
         if (requestCode == NEW_TASK_REQUEST_CODE){
             //
             if (resultCode == DodajZadanie.NEW_TASK_RESULT_CODE){
-                nazwa = data.getStringExtra("nazwa");
-                opis = data.getStringExtra("opis");
+                Thread t = new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        String nazwa = data.getStringExtra("nazwa");
+                        String opis = data.getStringExtra("opis");
 
-                Zadanie zad = bazaZadan.dodajZadanie(nazwa, opis);
-                zadAdp.add(zad);
+                        Zadanie zad = bazaZadan.dodajZadanie(nazwa, opis);
+                        zadAdp.add(zad);
+                        return;
+                    }
+                });
             }
         }
     }

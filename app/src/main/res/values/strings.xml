@@ -4,4 +4,6 @@
     <string name="nazwaZadania">Wpisz nazwę zadania</string>
     <string name="opisZadania">Podaj krótki opis zaplanowanego zadnia</string>
     <string name="buttonDodaj">Zaplanuj zadanie</string>
+    <string name="title_activity_mapa">Map</string>
+    <string name="buttonMapa">Zaplanuj lokalizację</string>
 </resources>

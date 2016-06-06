@@ -1,4 +1,4 @@
-package tama.organizer;
+package tama.organizer.Zadania;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -8,6 +8,9 @@ import android.widget.BaseAdapter;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import java.util.ArrayList;
+
+import tama.organizer.Baza.BazaZadan;
+import tama.organizer.R;
 
 /**
  * Created by Tama on 24.05.2016.

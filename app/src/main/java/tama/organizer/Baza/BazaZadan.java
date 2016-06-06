@@ -1,4 +1,4 @@
-package tama.organizer;
+package tama.organizer.Baza;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -6,6 +6,8 @@ import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import java.util.ArrayList;
+
+import tama.organizer.Zadania.Zadanie;
 
 /**
  * Created by Tama on 26.05.2016.

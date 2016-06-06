@@ -1,4 +1,4 @@
-package tama.organizer;
+package tama.organizer.Baza;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;

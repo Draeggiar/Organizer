@@ -8,7 +8,19 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.ListView;
 
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.MapFragment;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
+import com.google.android.gms.maps.model.MarkerOptions;
+
 import java.util.ArrayList;
+
+import tama.organizer.Baza.BazaZadan;
+import tama.organizer.Mapy.MapaActivity;
+import tama.organizer.Zadania.NoweZadanieActivity;
+import tama.organizer.Zadania.Zadanie;
+import tama.organizer.Zadania.ZadanieAdapter;
 
 public class MainActivity extends AppCompatActivity{
     private static ArrayList<Zadanie> listaZadan;
@@ -51,8 +63,8 @@ public class MainActivity extends AppCompatActivity{
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.menu_dodaj:
-                // Po kilkneciu na dodanie noweog zadania wyswietla formularz
-                Intent intent = new Intent(this, DodajZadanie.class);
+                // Po kilkneciu na dodanie nowego zadania wyswietla formularz
+                Intent intent = new Intent(this, NoweZadanieActivity.class);
                 startActivityForResult(intent, NEW_TASK_REQUEST_CODE);
                 break;
         }
@@ -64,7 +76,7 @@ public class MainActivity extends AppCompatActivity{
         // Pobiera dane z formularza i dodaje zadanie do bazy, a nastepnie odswieza liste zadan
         if (requestCode == NEW_TASK_REQUEST_CODE){
             //
-            if (resultCode == DodajZadanie.NEW_TASK_RESULT_CODE){
+            if (resultCode == NoweZadanieActivity.NEW_TASK_RESULT_CODE){
                 Thread t = new Thread(new Runnable() {
                     @Override
                     public void run() {

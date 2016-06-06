@@ -1,4 +1,4 @@
-package tama.organizer;
+package tama.organizer.Zadania;
 
 /**
  * Created by Tama on 24.05.2016.

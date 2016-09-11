@@ -6,4 +6,5 @@
     <string name="buttonDodaj">Zaplanuj zadanie</string>
     <string name="title_activity_mapa">Map</string>
     <string name="buttonMapa">Zaplanuj lokalizację</string>
+    <string name="mButton">Ok</string>
 </resources>

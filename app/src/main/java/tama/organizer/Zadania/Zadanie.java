@@ -9,13 +9,10 @@ public class Zadanie {
     private String opis;
 
 
-    public Zadanie(){}
+    private String szerokosc;
+    private String dlugosc;
 
-    public Zadanie(int id, String nazwa, String opis){
-        this.id = id;
-        this.nazwa = nazwa;
-        this.opis = opis;
-    }
+    public Zadanie(){}
 
     public String getNazwa() {
         return nazwa;
@@ -39,5 +36,21 @@ public class Zadanie {
 
     public void setOpis(String opis) {
         this.opis = opis;
+    }
+
+    public String getDlugosc() {
+        return dlugosc;
+    }
+
+    public void setDlugosc(String dlugosc) {
+        this.dlugosc = dlugosc;
+    }
+
+    public String getSzerokosc() {
+        return szerokosc;
+    }
+
+    public void setSzerokosc(String szerokosc) {
+        this.szerokosc = szerokosc;
     }
 }

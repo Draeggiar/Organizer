@@ -18,6 +18,7 @@ import tama.organizer.R;
 public class ZadanieAdapter extends BaseAdapter{
     private volatile ArrayList<Zadanie> listaZadan;
     private LayoutInflater zadInf;
+    private BazaZadan db;
 
     public ZadanieAdapter(Context c, ArrayList<Zadanie> zadania){
             listaZadan=zadania;
@@ -29,9 +30,19 @@ public class ZadanieAdapter extends BaseAdapter{
         notifyDataSetChanged();
     }
 
+    public void edit(int id, Zadanie zad){
+        listaZadan.set(id, zad);
+        notifyDataSetChanged();
+    }
+
+    public void delete(int zadID){
+        listaZadan.remove(zadID);
+        notifyDataSetChanged();
+    }
+
     @Override
     public int getCount() {
-        return listaZadan.size();
+       return listaZadan.size();
     }
 
     @Override
@@ -53,15 +64,6 @@ public class ZadanieAdapter extends BaseAdapter{
         zadanieNazwa.setText(obecneZadanie.getNazwa());
         zadanieOpis.setText(obecneZadanie.getOpis());
         zadLay.setTag(position);
-        zadLay.setOnLongClickListener(new View.OnLongClickListener() {
-            @Override
-            public boolean onLongClick(View v) {
-                listaZadan.remove(position);
-                BazaZadan.usunZadanie(obecneZadanie);
-                notifyDataSetChanged();
-                return false;
-            }
-        });
 
         return zadLay;
     }
